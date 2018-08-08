@@ -1,0 +1,33 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  overflow: hidden;
+}
+
+.container {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.search-light {
+  --size: 160px;
+
+  position: absolute;
+
+  transform: translate(10px, 10px);
+
+  width: var(--size);
+  height: var(--size);
+
+  background-color: white;
+
+  border-radius: var(--size);
+
+  transition: all 1s cubic-bezier(0.3, 0.27, 0.07, 1.2);
+}
