@@ -40,12 +40,12 @@ class Effect {
   static rotator (deg) { 
     return `rotate(${deg}deg)`;
   }
-  static addRotation (addIt) {
+  static addRotation (addIt, deg = 15) {
     if (!addIt) {
       return '';
     }
   
-    return ` ${Effect.rotator(Effect.random(0, 30) - 15)}`;
+    return ` ${Effect.rotator(Effect.random(0, deg * 2) - deg)}`;
   }
 }
 
@@ -71,8 +71,9 @@ class Square extends Effect {
 
   run () {
     const scale = Effect.scaler(Effect.random(1, this.maxScale * 10) / 10);
+    const doRotation = Effect.random(1, 10) > 5;
 
-    this.setTransformation(scale);
+    this.setTransformation(scale + Effect.addRotation(doRotation, 10));
   }
 }
 
@@ -174,7 +175,7 @@ class EffectMachine {
   runEffect ({ effect, type }, rounds, round = 0) {
     if (round === rounds) {
       this.hideShow(effect.getElement(), 'add');
-      this.start(Effect.random(3, 6));
+      this.start(Effect.random(5, 10));
       return;
     }
   
@@ -218,7 +219,7 @@ const effectsMachine = new EffectMachine([{
   type: 'combi',
 }]);
 
-effectsMachine.start();
+effectsMachine.start(10);
 
 // Only enable flashing if desired.
 if (window.location.hash === '#strobe') {

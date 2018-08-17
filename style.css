@@ -86,6 +86,7 @@ html, body {
 
 .scanline {
   --slSize: 20px;
+  background-color: white;
 }
 .vertical {
   width: var(--slSize);
